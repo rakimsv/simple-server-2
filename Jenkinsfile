@@ -5,6 +5,7 @@ pipeline {
         stage('Testing Environment') {
             steps {
 		    sh 'mvn test -Dtest=ControllerAndServiceSuite'
+		    sh 'mvn test -Dtest=IntegrationSuite'
             }
         }
         stage('Build') {
@@ -22,5 +23,10 @@ pipeline {
                     echo "Deploy"
             }
         }
+	stage('Hello Ryan') {
+	    steps {
+		    echo "Hello Ryan"
+	    }
+	}
     }
 }
