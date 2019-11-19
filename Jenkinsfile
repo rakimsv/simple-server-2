@@ -23,9 +23,9 @@ pipeline {
                     echo "Deploy"
             }
         }
-	stage('Hello Ryan') {
+	stage('Deploy Ryan') {
 	    steps {
-		    echo "Hello Ryan"
+		    echo "Ryan Deployed"
 	    }
 	}
     }
