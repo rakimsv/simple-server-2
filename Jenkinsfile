@@ -2,28 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Testing Environment') {
+        stage('Testing a Ryan') {
             steps {
 		    sh 'mvn test -Dtest=ControllerAndServiceSuite'
 		    sh 'mvn test -Dtest=IntegrationSuite'
             }
         }
-        stage('Build') {
+        stage('Building a Ryan') {
             steps {
                     sh 'mvn install -DskipTests'
             }
         }
-        stage('Staging') {
+        stage('Staging a Ryan') {
             steps {
                 echo "Staging"
             }
         }
-        stage('Deploy') {
+        stage('Deploying a Ryan') {
             steps {
                     echo "Deploy"
             }
         }
-	stage('Deploy Ryan') {
+	stage('Ryan Deployed') {
 	    steps {
 		    echo "Ryan Deployed"
 	    }
