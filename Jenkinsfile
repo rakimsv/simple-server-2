@@ -16,12 +16,13 @@ pipeline {
         }
         stage('Staging a Ryan') {
             steps {
-                echo "Staging"
+                   echo "Staging"
             }
         }
         stage('Deploying a Ryan') {
             steps {
-                    echo "Deploy"
+		   sh 'docker push rakimsv/simple-project:latest"
+                   echo "Deploy"
             }
         }
 	stage('Ryan Deployed') {
