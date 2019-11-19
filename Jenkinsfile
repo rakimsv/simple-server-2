@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Building a Ryan') {
             steps {
-                    sh 'mvn install -DskipTests'
+                    sh 'mvn package -DskipTests'
             }
         }
         stage('Staging a Ryan') {
