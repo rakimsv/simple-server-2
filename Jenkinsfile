@@ -11,7 +11,7 @@ pipeline {
         stage('Building a Ryan') {
             steps {
                     sh 'mvn package -DskipTests'
-		    sh 'docker build -t="rakimsv/simple-project:latest" .
+		    sh 'docker build -t="rakimsv/simple-project:latest" .'
             }
         }
         stage('Staging a Ryan') {
