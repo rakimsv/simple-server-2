@@ -1,20 +1,34 @@
 pipeline {
     agent any
+
     stages {
-        stage('Test') {
+        stage('Testing Environment') {
             steps {
-                sh mvn test Dtest=ControllerAndServiceSuite
+                dir("server/") {
+                    sh 'mvn test -Dtest=ControllerAndServiceSuite'
+                    sh 'mvn test -Dtest=IntegrationSuite'
+                }
             }
         }
         stage('Build') {
             steps {
-                echo "Build"
+                dir("server/"){
+                    sh 'mvn install -DskipTests'
+                }
             }
         }
-        stage('Deploy') {
-       steps {
-	echo "Deploy"
-   	}
-       }
-   }
+        stage('Staging') {
+            steps {
+                sh 'sudo docker-compose build'
+                sh 'sudo docker-compose up -d'
+            }
+        }
+        stage('end2end Tests') {
+            steps {
+                dir("server/") {
+                    sh 'mvn test -Dtest=SeleniumSuite'
+                }
+            }
+        }
+    }
 }
