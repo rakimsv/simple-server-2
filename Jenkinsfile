@@ -26,7 +26,12 @@ pipeline {
             }
         }
         stage('Staging a Ryan') {
-            steps {
+            when {
+		  expression {
+			      env.BRANCH_NAME=='developer'
+		  }
+	    }
+	    steps {
                    echo "Staging"
             }
         }
