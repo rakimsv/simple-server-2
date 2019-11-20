@@ -28,7 +28,7 @@ pipeline {
         stage('Staging a Ryan') {
             when {
 		  expression {
-			      env.BRANCH_NAME=='developer' && env.BRANCH_NAME=='master'			      
+			      env.BRANCH_NAME=='developer' || env.BRANCH_NAME=='master'			      
 		  }
 	    }
 	    steps {
