@@ -31,7 +31,7 @@ public class NoteController {
 	@Autowired
 	private NoteService service;
 
-	//@RequestMapping(path = "note/", method = {RequestMethod.GET})
+	@RequestMapping(path = "note/", method = {RequestMethod.GET})
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<NoteDto> getNotes(){
 		return new ArrayList<NoteDto>(service.getNotes());
