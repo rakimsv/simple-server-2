@@ -4,14 +4,25 @@ pipeline {
     stages {
         stage('Testing a Ryan') {
             steps {
-		    sh 'mvn test -Dtest=ControllerAndServiceSuite'
-		    sh 'mvn test -Dtest=IntegrationSuite'
+		   sh 'mvn test -Dtest=ControllerAndServiceSuite'
+		   sh 'mvn test -Dtest=IntegrationSuite'
             }
         }
         stage('Building a Ryan') {
             steps {
-                    sh 'mvn package -DskipTests'
-		    sh 'docker build -t="rakimsv/simple-project:latest" .'
+                   sh 'mvn package -DskipTests'
+		   sh 'docker build -t="rakimsv/simple-project:latest" .'
+            }
+        }
+	stage('Deploying a Ryan') {
+            steps {
+		   sh 'docker push "rakimsv/simple-project:latest"'
+                   echo "Deploy"
+            }
+        }
+	stage('Testing Ryans Environment') {
+            steps {
+                   echo "hello"
             }
         }
         stage('Staging a Ryan') {
@@ -19,16 +30,16 @@ pipeline {
                    echo "Staging"
             }
         }
-        stage('Deploying a Ryan') {
-            steps {
-		   sh 'docker push "rakimsv/simple-project:latest"'
-                   echo "Deploy"
+        stage('A Ryan is in Production') {
+            when {
+		  expression {
+			      env.BRANCH_NAME == 'master'
+		  }
+	    } 
+	    steps {
+                   echo "Production"
             }
         }
-	stage('Ryan Deployed') {
-	    steps {
-		    echo "Ryan Deployed"
-	    }
-	}
     }
-}
+} 
+
