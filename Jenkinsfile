@@ -29,6 +29,7 @@ pipeline {
             when {
 		  expression {
 			      env.BRANCH_NAME=='developer'
+			      env.BRANCH_NAME=='master'
 		  }
 	    }
 	    steps {
