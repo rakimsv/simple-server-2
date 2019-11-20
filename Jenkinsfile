@@ -33,7 +33,7 @@ pipeline {
         stage('A Ryan is in Production') {
             when {
 		  expression {
-			      env.BRANCH_NAME == 'master'
+			      env.BRANCH_NAME=='master'
 		  }
 	    } 
 	    steps {
