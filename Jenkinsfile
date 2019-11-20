@@ -14,21 +14,27 @@ pipeline {
 		    sh 'docker build -t="rakimsv/simple-project:latest" .'
             }
         }
-        stage('Staging a Ryan') {
-            steps {
-                   echo "Staging"
-            }
-        }
-        stage('Deploying a Ryan') {
+	stage('Deploying a Ryan') {
             steps {
 		   sh 'docker push "rakimsv/simple-project:latest"'
                    echo "Deploy"
             }
         }
-	stage('Ryan Deployed') {
-	    steps {
-		    echo "Ryan Deployed"
-	    }
-	}
+	stage('Testing Ryan's Environment') {
+            steps {
+                echo "hello"
+            }
+        }
+        stage('Staging a Ryan') {
+            steps {
+                   echo "Staging"
+            }
+        }
+      stage('A Ryan is in Production') {
+            steps {
+                echo "hello"
+            }
+        }
     }
 }
+
