@@ -31,8 +31,13 @@ pipeline {
             }
         }
         stage('A Ryan is in Production') {
-            steps {
-                   echo "hello"
+            when {
+		  expression {
+			      env.BRANCH_NAME == 'master'
+		  }
+	    } 
+	    steps {
+                   echo "Production"
             }
         }
     }
