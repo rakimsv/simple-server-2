@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Testing a Ryan') {
             steps {
-		    sh 'mvn test -Dtest=ControllerAndServiceSuite'
-		    sh 'mvn test -Dtest=IntegrationSuite'
+		   sh 'mvn test -Dtest=ControllerAndServiceSuite'
+		   sh 'mvn test -Dtest=IntegrationSuite'
             }
         }
         stage('Building a Ryan') {
             steps {
-                    sh 'mvn package -DskipTests'
-		    sh 'docker build -t="rakimsv/simple-project:latest" .'
+                   sh 'mvn package -DskipTests'
+		   sh 'docker build -t="rakimsv/simple-project:latest" .'
             }
         }
 	stage('Deploying a Ryan') {
@@ -20,9 +20,9 @@ pipeline {
                    echo "Deploy"
             }
         }
-	stage('Testing Ryan's Environment') {
+	stage('Testing Ryans Environment') {
             steps {
-                echo "hello"
+                   echo "hello"
             }
         }
         stage('Staging a Ryan') {
@@ -30,11 +30,11 @@ pipeline {
                    echo "Staging"
             }
         }
-      stage('A Ryan is in Production') {
+        stage('A Ryan is in Production') {
             steps {
-                echo "hello"
+                   echo "hello"
             }
         }
     }
-}
+} 
 
